@@ -118,6 +118,12 @@ public class House
             }
 
             toReturn[j] = new Room(hasCoffee, hasCream, hasSugar, northDoor, southDoor);
+
+            northDoor = true;
+            southDoor = true;
+            hasCoffee = false;
+            hasCream = false;
+            hasSugar = false;
         }
 
         return toReturn;
