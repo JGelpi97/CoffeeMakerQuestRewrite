@@ -14,6 +14,8 @@ public class Game
 
     /**
      * Changed to handleInput from doSomething
+     * Remove Case insensitivity of the north command
+     * Added Help Input
      *
      * @param move Keyboard input
      * @return int for game logic
