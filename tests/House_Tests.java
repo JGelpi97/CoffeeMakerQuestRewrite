@@ -1,6 +1,13 @@
+import com.laboon.Game;
 import com.laboon.House;
+import com.laboon.Player;
 import com.laboon.Room;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -16,6 +23,35 @@ import static org.mockito.Mockito.*;
 public class House_Tests 
 {
     House h;
+
+    ByteArrayOutputStream outContent;
+    ByteArrayOutputStream errContent;
+
+    /*
+    - Before Method: This is Called before Every Test
+    - Creates a sub of the House and Player classes
+    - Creates the Game Object for Testing
+    - Configures system out and system error to print to a String (Used for Tests)
+     */
+    @Before
+    public void init()
+    {
+        outContent = new ByteArrayOutputStream();
+        errContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        System.setErr(new PrintStream(errContent));
+    }
+
+    /*
+    - After Method
+    - Sets the System out and system error to null
+     */
+    @After
+    public void tearDown()
+    {
+        System.setOut(null);
+        System.setErr(null);
+    }
 
     /**
      * HELPER METHODS 
@@ -362,5 +398,92 @@ public class House_Tests
         Room[] r = h.generateRooms(500);
         assertEquals(500, r.length);
     }
-    
+
+    /*
+    - Tests House.look() to see if player collects coffee when the room contains coffee
+    - To pass:          Player has coffee after looking in room
+    - Expected output:  p.hasCoffee() == true
+     */
+    @Test
+    public void test_look_GetCoffee()
+    {
+        Room r = new Room(true, false, false, false, false);
+        Player p = new Player(false, false, false);
+
+        House h = new House(1);
+
+        assertFalse(p.hasCoffee());
+        h.look(p, r);
+        assertTrue(p.hasCoffee());
+    }
+
+    /*
+    - Tests House.look() to see if player collects cream when the room contains cream
+    - To pass:          Player has cream after looking in room
+    - Expected output:  p.hasCream() == true
+     */
+    @Test
+    public void test_look_GetCream()
+    {
+        Room r = new Room(false, true, false, false, false);
+        Player p = new Player(false, false, false);
+
+        House h = new House(1);
+
+        assertFalse(p.hasCream());
+        h.look(p, r);
+        assertTrue(p.hasCream());
+    }
+
+    /*
+    - Tests House.look() to see if player collects sugar when the room contains Sugar
+    - To pass:          Player has sugar after looking in room
+    - Expected output:  p.hasSugar() == true 
+     */
+    @Test
+    public void test_look_GetSugar()
+    {
+        Room r = new Room(false, false, true, false, false);
+        Player p = new Player(false, false, false);
+
+        House h = new House(1);
+
+        assertFalse(p.hasSugar());
+        h.look(p, r);
+        assertTrue(p.hasSugar());
+    }
+
+    /*
+    - Tests House.look() when the room has no items
+    - To pass:          A message saying "You don't see anything out of the ordinary." prints out
+    - Expected output:  outContent.toString() == "You don't see anything out of the ordinary.\r\n"
+     */
+    @Test
+    public void test_look_NoItems()
+    {
+        Room r = new Room(false, false, false, false, false);
+
+        House h = new House(1);
+
+        h.look(null, r);
+        assertEquals(outContent.toString(), "You don't see anything out of the ordinary.\r\n");
+    }
+
+    /*
+    - Tests House.look() when no room is passed to it, it
+        should default to the current room
+    - To pass:      Player has coffee after looking into room, even though
+                        room was unspecified
+    - Expected output:  p.HasCoffee() == true
+     */
+    @Test
+    public void test_look_WithoutRoom()
+    {
+        Room r = new Room(true, false, false, false, false);
+        House h = new House(new Room[] {r});
+        Player p = new Player(false, false, false);
+
+        h.look(p, null);
+        assertTrue(p.hasCoffee());
+    }
 }

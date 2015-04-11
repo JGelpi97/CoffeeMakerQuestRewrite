@@ -23,15 +23,7 @@ public class House
 
     public String getCurrentRoomInfo()
     {
-        if (_currentRoom < 0 || _currentRoom >= _numRooms)
-        {
-            _currentRoom = 0;
-            return "You are in a magical land!  But you are returned to the beginning!";
-        }
-        else
-        {
-            return _rooms[_currentRoom].getDescription();
-        }
+        return _rooms[_currentRoom].getDescription();
     }
 
     public void moveNorth()
@@ -129,16 +121,6 @@ public class House
         }
 
         return toReturn;
-    }
-
-    public int getCurrentRoomNumber()
-    {
-        return _currentRoom;
-    }
-
-    public Room[] getRooms()
-    {
-        return _rooms;
     }
 
 }
