@@ -70,6 +70,14 @@ public class Game
         return toReturn;
     }
 
+    /**
+     * Refactored to Allow Testing
+     * Scanner and main loop is moved to CoffeeMake.runGameLoop()
+     * Returns 1 for win, -1 for loss, 0 for standard move
+     *
+     * @param move
+     * @return
+     */
     public int run(String move)
     {
         return handleInput(move);
