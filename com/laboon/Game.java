@@ -6,7 +6,7 @@ public class Game
 {
 
     private Player _player = null;
-    private House _house = null;
+    public House _house = null;
 
     public Game(Player p, House h)
     {
@@ -70,46 +70,9 @@ public class Game
         return toReturn;
     }
 
-    public int run()
+    public int run(String move)
     {
-        int toReturn = 0;
-
-        Scanner in = new Scanner(System.in);
-        String move = null;
-
-        boolean gameOver = false;
-        boolean win = false;
-
-        while (!gameOver)
-        {
-            System.out.println(_house.getCurrentRoomInfo());
-            System.out.println(" INSTRUCTIONS (N,S,L,I,D) > ");
-            move = in.nextLine();
-            int status = handleInput(move);
-            if (status == 1)
-            {
-                gameOver = true;
-                win = true;
-            }
-            else if (status == -1)
-            {
-                gameOver = true;
-                win = false;
-            }
-        }
-
-        if (win)
-        {
-            System.out.println("You win!");
-            toReturn = 0;
-        }
-        else
-        {
-            System.out.println("You lose!");
-            toReturn = 1;
-        }
-
-        return toReturn;
+        return handleInput(move);
     }
 
 }

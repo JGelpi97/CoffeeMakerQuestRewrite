@@ -1,11 +1,48 @@
 package com.laboon;
 
+import java.util.Scanner;
+
 public class CoffeeMaker
 {
 
     private int runGameLoop(Player p, House h, Game g)
     {
-        int toReturn = g.run();
+        int toReturn;
+        String move;
+
+        Scanner in = new Scanner(System.in);
+        boolean gameOver = false;
+        boolean win = false;
+
+        while (!gameOver)
+        {
+            System.out.println(g._house.getCurrentRoomInfo());
+            System.out.println(" INSTRUCTIONS (N,S,L,I,D) > ");
+            move = in.nextLine();
+            int status = g.run(move);
+            if (status == 1)
+            {
+                gameOver = true;
+                win = true;
+            }
+            else if (status == -1)
+            {
+                gameOver = true;
+                win = false;
+            }
+        }
+
+        if (win)
+        {
+            System.out.println("You win!");
+            toReturn = 0;
+        }
+        else
+        {
+            System.out.println("You lose!");
+            toReturn = 1;
+        }
+
         return toReturn;
     }
 

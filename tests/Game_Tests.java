@@ -489,28 +489,37 @@ public class Game_Tests
     /*
     - Test To see if Game.run() properly wins the game
     - Uses Mockito to mock Player.drink() to return true which will cause the game to win
-    - To Pass:  Run Method returns 0
-    - Expected Output:  Method prints 0
+    - To Pass:  Run Method returns 1
+    - Expected Output:  Method prints 1
      */
     @Test
     public void testRun_GameWin()
     {
-        fail("NOTE: Do to the Scanner in the method, this method is unable to be tested");
-//        when(p.drink()).thenReturn(true);
-//        assertEquals(0, g.run());
+        when(p.drink()).thenReturn(true);
+        assertEquals(1, g.run("D"));
     }
 
     /*
     - Test To see if Game.run() properly loses the game
     - Uses Mockito to mock Player.drink() to return false which will cause the game to lose
-    - To Pass:  Run Method returns 1
+    - To Pass:  Run Method returns -1
     - Expected Output:  1
      */
     @Test
     public void testRun_GameLose()
     {
-        fail("NOTE: Do to the Scanner in the method, this method is unable to be tested");
-//        when(p.drink()).thenReturn(false);
-//        assertEquals(1, g.run());
+        when(p.drink()).thenReturn(false);
+        assertEquals(-1, g.run("D"));
+    }
+
+    /*
+    - Test To see if Game.run() properly handles a non drink command
+    - To Pass:  Run Method returns 0
+    - Expected Output:  0
+     */
+    @Test
+    public void testRun_GameIteration()
+    {
+        assertEquals(0, g.run("H"));
     }
 }
