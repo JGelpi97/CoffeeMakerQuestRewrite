@@ -1,7 +1,5 @@
 package com.laboon;
 
-import java.util.Scanner;
-
 public class Game
 {
 
@@ -17,8 +15,8 @@ public class Game
     /**
      * Changed to handleInput from doSomething
      *
-     * @param move
-     * @return int for gmae logic
+     * @param move Keyboard input
+     * @return int for game logic
      */
     public int handleInput(String move)
     {
@@ -75,8 +73,8 @@ public class Game
      * Scanner and main loop is moved to CoffeeMake.runGameLoop()
      * Returns 1 for win, -1 for loss, 0 for standard move
      *
-     * @param move
-     * @return
+     * @param move String
+     * @return 1 for win, -1 for lose, 0 for normal play
      */
     public int run(String move)
     {
