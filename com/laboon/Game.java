@@ -14,6 +14,12 @@ public class Game
         _house = h;
     }
 
+    /**
+     * Changed to handleInput from doSomething
+     *
+     * @param move
+     * @return int for gmae logic
+     */
     public int handleInput(String move)
     {
         int toReturn = 0;
