@@ -36,12 +36,26 @@ public class House
 
     public void moveNorth()
     {
-        _currentRoom += 1;
+        if (_currentRoom == (_numRooms - 1))    //currentRoom starts at 0
+        {
+            System.out.println("You cannot go North any further!");
+        }
+        else
+        {
+            _currentRoom += 1;
+        }
     }
 
     public void moveSouth()
     {
-        _currentRoom -= 1;
+        if (_currentRoom == 0)
+        {
+            System.out.println("You cannot go South any further!");
+        }
+        else
+        {
+            _currentRoom -= 1;
+        }
     }
 
     public void look(Player player, Room room)
