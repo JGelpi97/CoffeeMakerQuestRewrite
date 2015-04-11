@@ -123,14 +123,4 @@ public class House
         return toReturn;
     }
 
-    public int getCurrentRoomNumber()
-    {
-        return _currentRoom;
-    }
-
-    public Room[] getRooms()
-    {
-        return _rooms;
-    }
-
 }

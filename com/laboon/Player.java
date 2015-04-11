@@ -116,4 +116,20 @@ public class Player
         }
         return win;
     }
+
+    public boolean hasCoffee()
+    {
+        return  _hasCoffee;
+    }
+
+    public boolean hasCream()
+    {
+        return  _hasCream;
+    }
+
+    public boolean hasSugar()
+    {
+        return  _hasSugar;
+    }
+
 }
