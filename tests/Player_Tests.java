@@ -508,4 +508,76 @@ public class Player_Tests
         p.getSugar();
         assertTrue(p.drink());
     }
+
+    /*
+    - Tests Player.hasCoffee() when they have coffee
+    - To pass:  Player has coffee
+    - Expected output:  p.hasCoffee() == true
+     */
+    @Test
+    public void test_HasCoffee_WithCoffee()
+    {
+        Player p = new Player(true, true, true);
+        assertTrue(p.hasCoffee());
+    }
+
+    /*
+    - Tests Player.hasCoffee() when they don't have coffee
+    - To pass:  Player does not have coffee
+    - Expected output:  p.hasCoffee() == false
+     */
+    @Test
+    public void test_HasCoffee_WithoutCoffee()
+    {
+        Player p = new Player(false, false, false);
+        assertFalse(p.hasCoffee());
+    }
+
+    /*
+    - Tests Player.hasSugar() when they have sugar
+    - To pass:  Player has sugar
+    - Expected output:  p.hasSugar() == true
+     */
+    @Test
+    public void test_HasSugar_WithSugar()
+    {
+        Player p = new Player(true, true, true);
+        assertTrue(p.hasSugar());
+    }
+
+    /*
+    - Tests Player.hasSugar() when they don't have sugar
+    - To pass:  Player does not have sugar
+    - Expected output:  p.hasSugar() == false
+     */
+    @Test
+    public void test_HasSugar_WithoutSugar()
+    {
+        Player p = new Player(false, false, false);
+        assertFalse(p.hasSugar());
+    }
+
+    /*
+    - Tests Player.hasCream() when they have cream
+    - To pass:  Player has cream
+    - Expected output:  p.hasCream() == true
+     */
+    @Test
+    public void test_HasCream_WithCream()
+    {
+        Player p = new Player(true, true, true);
+        assertTrue(p.hasCream());
+    }
+
+    /*
+    - Tests Player.hasCream() when they don't have cream
+    - To pass:  Player does not have cream
+    - Expected output:  p.hasCream() == false
+     */
+    @Test
+    public void test_HasCream_WithoutCream()
+    {
+        Player p = new Player(false, false, false);
+        assertFalse(p.hasCream());
+    }    
 }
