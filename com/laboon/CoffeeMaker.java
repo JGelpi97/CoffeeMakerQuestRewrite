@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class CoffeeMaker
 {
 
-    private int runGameLoop(Player p, House h, Game g)
+    /*
+    - Removed Player and House from parameters - YAGNI Principle
+     */
+    private int runGameLoop(Game g)
     {
         int toReturn;
         String move;
@@ -17,7 +20,7 @@ public class CoffeeMaker
         while (!gameOver)
         {
             System.out.println(g._house.getCurrentRoomInfo());
-            System.out.println(" INSTRUCTIONS (N,S,L,I,D) > ");
+            System.out.println(" INSTRUCTIONS (N,S,L,I,D,H) > ");
             move = in.nextLine();
             int status = g.run(move);
             if (status == 1)
@@ -46,7 +49,10 @@ public class CoffeeMaker
         return toReturn;
     }
 
-    public int runArgs(String arg)
+    /*
+    - Removed Args from parameters since arg was not being used - YAGNI Principle
+     */
+    public int runArgs()
     {
         System.out.println("Instructions for Coffee Maker Quest - ");
         System.out.println("You are a brave student trying to study for finals, but you need caffeine.");
@@ -64,11 +70,11 @@ public class CoffeeMaker
             Player p = new Player();
             House h = new House(6);
             Game g = new Game(p, h);
-            returnValue = cm.runGameLoop(p, h, g);
+            returnValue = cm.runGameLoop(g);
         }
         else
         {
-            returnValue = cm.runArgs(args[0]);
+            returnValue = cm.runArgs();
         }
 
         System.out.println("Exiting with error code " + returnValue);
