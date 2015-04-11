@@ -51,6 +51,18 @@ public class Game
                 toReturn = -1;
             }
         }
+        else if (move.equalsIgnoreCase("H"))
+        {
+            System.out.println("Instructions for Coffee Maker Quest - ");
+            System.out.println("You are a brave student trying to study for finals, but you need caffeine.");
+            System.out.println("The goal of the game is to collect sugar, coffee, and cream so that you can study.");
+            System.out.println("Valid commmands are:");
+            System.out.println(" N - Move North");
+            System.out.println(" S - Move South");
+            System.out.println(" L - Look around room");
+            System.out.println(" I - Show inventory");
+            System.out.println(" D - Drink to to win game");
+        }
         else
         {
             System.out.println("What?");
