@@ -1,5 +1,3 @@
-package tests;
-
 import com.laboon.Player;
 import org.junit.Test;
 
@@ -9,7 +7,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Joshua Zwolan on 2/2/2015.
  * 
- * This contains junit tests for Player.java 
+ * This contains junit tests for Player.java
  *
  */
 
@@ -240,7 +238,7 @@ public class Player_Tests
      * These use Player.getCoffee(), Player.getCream(), and Player.getSugar()
      *      to set up instead of the constructor with parameters. These also use Player.Player() (the default constructor as well)
      *
-     * In other words, this tests to make sure the .getCream(), .getCoffee(), and .getSugar are working along with the 
+     * In other words, this tests to make sure the .getCream(), .getCoffee(), and .getSugar are working along with the
      *      Player.hasAllItems() method
      */
     /*
@@ -372,7 +370,7 @@ public class Player_Tests
      * These use Player.getCoffee(), Player.getCream(), and Player.getSugar() for the player to receive items
      *      instead of using the constructor with parameters. These also use Player.Player() (the default constructor as well)
      *
-     * In other words, this tests to make sure the .getCream(), .getCoffee(), and .getSugar are working along with the 
+     * In other words, this tests to make sure the .getCream(), .getCoffee(), and .getSugar are working along with the
      *      Player.drink() method
      */
     /*

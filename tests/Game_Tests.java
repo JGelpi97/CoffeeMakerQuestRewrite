@@ -1,5 +1,3 @@
-package tests;
-
 import com.laboon.Game;
 import com.laboon.House;
 import com.laboon.Player;

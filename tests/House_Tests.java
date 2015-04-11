@@ -1,5 +1,3 @@
-package tests;
-
 import com.laboon.House;
 import com.laboon.Room;
 import org.junit.Test;
@@ -11,7 +9,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Joshua Zwolan on 2/1/2015.
  * 
- * This contains junit tests for House.java 
+ * This contains junit tests for House.java
  *
  */
 
@@ -62,7 +60,7 @@ public class House_Tests
      * 
      * The Number of Rooms in the House being tested is 6 
      * 
-     * SIDE NOTE: These tests are also implicitly testing House.moveNorth() 
+     * SIDE NOTE: These tests are also implicitly testing House.moveNorth()
      */
     /*
     - Test House.getCurrentRoomInfo() to make sure the method is returning the correct

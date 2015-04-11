@@ -1,5 +1,3 @@
-package tests;
-
 import com.laboon.Room;
 import org.junit.Test;
 
