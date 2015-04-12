@@ -26,6 +26,9 @@ public class House
         return _rooms[_currentRoom].getDescription();
     }
 
+    /*
+     * Refactored to make sure you cannot go out of bounds
+     */
     public void moveNorth()
     {
         if (_currentRoom == (_numRooms - 1))    //currentRoom starts at 0
@@ -38,6 +41,9 @@ public class House
         }
     }
 
+    /*
+     * Refactored to make sure you cannot go out of bounds
+     */
     public void moveSouth()
     {
         if (_currentRoom == 0)

@@ -117,6 +117,9 @@ public class Player
         return win;
     }
 
+    /*
+     * Added these has() functions to be useful in testing
+     */
     public boolean hasCoffee()
     {
         return  _hasCoffee;
