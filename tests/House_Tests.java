@@ -1,4 +1,3 @@
-import com.laboon.Game;
 import com.laboon.House;
 import com.laboon.Player;
 import com.laboon.Room;
@@ -15,12 +14,12 @@ import static org.mockito.Mockito.*;
 
 /**
  * Created by Joshua Zwolan on 2/1/2015.
- * 
+ *
  * This contains junit tests for House.java
  *
  */
 
-public class House_Tests 
+public class House_Tests
 {
     House h;
 
@@ -55,23 +54,23 @@ public class House_Tests
 
     /**
      * HELPER METHODS 
-     * 
+     *
      */
     // This Method Sets up a Mocked Array of Rooms
     // Each room's description is it's room number (location in array + 1)
     private Room[] returnRoomArray( int numberOfRooms )
     {
         Room[] r = new Room[numberOfRooms];
-                
+
         for (int i = 0; i < r.length; i ++)
         {
             r[i] = mock(Room.class);
             when(r[i].getDescription()).thenReturn(Integer.toString(i+1));
         }
-        
+
         return r;
     }
-    
+
     // This Method Assumes that the House's current room is the first room
     private void moveToRoomViaNorth(int roomNumber)
     {
@@ -93,9 +92,9 @@ public class House_Tests
     /**
      * The Following Tests test House.getCurrentRoomInfo() for each room
      * by moving North 
-     * 
+     *
      * The Number of Rooms in the House being tested is 6 
-     * 
+     *
      * SIDE NOTE: These tests are also implicitly testing House.moveNorth()
      */
     /*
@@ -204,9 +203,9 @@ public class House_Tests
     /**
      * The Following Tests test House.getCurrentRoomInfo() for each room
      * by moving South
-     * 
+     *
      * The Number of Rooms in the House being tested is 6
-     * 
+     *
      * SIDE NOTE: These tests are also implicitly testing House.moveNorth() because I have to
      *      use House.moveNorth() in order to move South
      *      This Test is also implicitly testing House.moveSouth()
@@ -485,5 +484,247 @@ public class House_Tests
 
         h.look(p, null);
         assertTrue(p.hasCoffee());
+    }
+
+    /**
+     * NEW TESTS!
+     *
+     * The following tests to make sure that House.moveNorth() is Working by checking to make
+     * sure that _CurrentRoom is properly getting set. moveNorth() returns its value.
+     *
+     * The Number of Rooms in the House being tested is 6
+     * moveToRoomViaNorth(int roomNumber) helper method is used
+     *
+     */
+    /*
+    - Tests House.moveNorth() when moving from the first room to the second room
+    - To pass:      h.moveNorth() returns 1
+    - Expected output:  1
+     */
+    @Test
+    public void test_moveNorth_0_to_1()
+    {
+        h = new House(returnRoomArray(6));
+        assertEquals(1, h.moveNorth());
+    }
+
+    /*
+    - Tests House.moveNorth() when moving from the second room to the third room
+    - To pass:      h.moveNorth() returns 2
+    - Expected output:  2
+     */
+    @Test
+    public void test_moveNorth_1_to_2()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(2);
+        assertEquals(2, h.moveNorth());
+    }
+
+    /*
+    - Tests House.moveNorth() when moving from the third room to the fourth room
+    - To pass:      h.moveNorth() returns 3
+    - Expected output:  3
+     */
+    @Test
+    public void test_moveNorth_2_to_3()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(3);
+        assertEquals(3, h.moveNorth());
+    }
+
+    /*
+    - Tests House.moveNorth() when moving from the fourth room to the fifth room
+    - To pass:      h.moveNorth() returns 4
+    - Expected output:  4
+     */
+    @Test
+    public void test_moveNorth_3_to_4()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(4);
+        assertEquals(4, h.moveNorth());
+    }
+
+    /*
+    - Tests House.moveNorth() when moving from the fifth room to the last room
+    - To pass:      h.moveNorth() returns 5
+    - Expected output:  5
+     */
+    @Test
+    public void test_moveNorth_4_to_5()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(5);
+        assertEquals(5, h.moveNorth());
+    }
+
+    /**
+     * NEW TESTS!
+     *
+     * The following tests to make sure that House.moveSouth() is Working
+     *
+     * The Number of Rooms in the House being tested is 6
+     * moveToRoomViaNorth(int roomNumber) helper method is used
+     *
+     */
+    /*
+    - Tests House.moveSouth() when moving from the last room to the fifth room
+    - To pass:      h.moveSouth() returns 4
+    - Expected output:  4
+     */
+    @Test
+    public void test_moveSouth_5_to_4()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(6);
+        assertEquals(4, h.moveSouth());
+    }
+
+    /*
+    - Tests House.moveSouth() when moving from the fifth room to the fourth room
+    - To pass:      h.moveSouth() returns 3
+    - Expected output:  3
+     */
+    @Test
+    public void test_moveSouth_4_to_3()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(5);
+        assertEquals(3, h.moveSouth());
+    }
+
+    /*
+    - Tests House.moveSouth() when moving from the fifth room to the third room
+    - To pass:      h.moveSouth() returns 2
+    - Expected output:  2
+     */
+    @Test
+    public void test_moveSouth_3_to_2()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(4);
+        assertEquals(2, h.moveSouth());
+    }
+
+    /*
+    - Tests House.moveSouth() when moving from the third room to the second room
+    - To pass:      h.moveSouth() returns 1
+    - Expected output:  1
+     */
+    @Test
+    public void test_moveSouth_2_to_1()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(3);
+        assertEquals(1, h.moveSouth());
+    }
+
+    /*
+    - Tests House.moveSouth() when moving from the second room to the first room
+    - To pass:      h.moveSouth() returns 0
+    - Expected output:  0
+     */
+    @Test
+    public void test_moveSouth_1_to_0()
+    {
+        h = new House(returnRoomArray(6));
+        moveToRoomViaNorth(2);
+        assertEquals(0, h.moveSouth());
+    }
+
+    /**
+     * NEW TESTS!
+     *
+     * The following tests to make sure that House.look() is working by taking a look at the new return value
+     *
+     * The Number of Rooms in the House being tested is 6
+     * moveToRoomViaNorth(int roomNumber) helper method is used
+     *
+     */
+    /*
+    - Test to make sure that House.look() does not find an item in a room that has no items
+    - Uses a mocked version of player and room
+    -
+    - To Pass: House.look() returns 0
+    - Expected Output: 0
+     */
+    @Test
+    public void test_look_NoItems_ReturnValue()
+    {
+        Room r = mock(Room.class);
+        Player p = mock(Player.class);
+        when(r.hasItem()).thenReturn(false);
+
+        House h = new House(6);
+
+        assertEquals(0, h.look(p, r));
+    }
+
+    /*
+    - Test to make sure that House.look() finds coffee in a room that contains coffee
+    - Uses a mocked version of player and room
+    -
+    - To Pass: House.look() returns 1
+    - Expected Output: 1
+     */
+    @Test
+    public void test_look_Coffee_ReturnValue()
+    {
+        Room r = mock(Room.class);
+        Player p = mock(Player.class);
+        when(r.hasItem()).thenReturn(true);
+        when(r.hasCoffee()).thenReturn(true);
+        when(r.hasCream()).thenReturn(false);
+        when(r.hasSugar()).thenReturn(false);
+
+        House h = new House(6);
+
+        assertEquals(1, h.look(p, r));
+    }
+
+    /*
+    - Test to make sure that House.look() finds cream in a room that contains cream
+    - Uses a mocked version of player and room
+    -
+    - To Pass: House.look() returns 2
+    - Expected Output: 2
+     */
+    @Test
+    public void test_look_Cream_ReturnValue()
+    {
+        Room r = mock(Room.class);
+        Player p = mock(Player.class);
+        when(r.hasItem()).thenReturn(true);
+        when(r.hasCoffee()).thenReturn(false);
+        when(r.hasCream()).thenReturn(true);
+        when(r.hasSugar()).thenReturn(false);
+
+        House h = new House(6);
+
+        assertEquals(2, h.look(p, r));
+    }
+
+    /*
+    - Test to make sure that House.look() finds sugar in a room that contains sugar
+    - Uses a mocked version of player and room
+    -
+    - To Pass: House.look() returns 3
+    - Expected Output: 3
+     */
+    @Test
+    public void test_look_Sugar_ReturnValue()
+    {
+        Room r = mock(Room.class);
+        Player p = mock(Player.class);
+        when(r.hasItem()).thenReturn(true);
+        when(r.hasCoffee()).thenReturn(false);
+        when(r.hasCream()).thenReturn(false);
+        when(r.hasSugar()).thenReturn(true);
+
+        House h = new House(6);
+
+        assertEquals(3, h.look(p, r));
     }
 }

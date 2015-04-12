@@ -26,10 +26,13 @@ public class House
         return _rooms[_currentRoom].getDescription();
     }
 
-    /*
-     * Refactored to make sure you cannot go out of bounds
+    /**
+     * REFACTORED
+     * Now returns the room number that the player is now in
+     *
+     * @return int of the room that the user is now in
      */
-    public void moveNorth()
+    public int moveNorth()
     {
         if (_currentRoom == (_numRooms - 1))    //currentRoom starts at 0
         {
@@ -39,12 +42,16 @@ public class House
         {
             _currentRoom += 1;
         }
+        return _currentRoom;
     }
 
-    /*
-     * Refactored to make sure you cannot go out of bounds
+    /**
+     * REFACTORED
+     * Now returns the room number that the player is now in
+     *
+     * @return int of the room that the user is now in
      */
-    public void moveSouth()
+    public int moveSouth()
     {
         if (_currentRoom == 0)
         {
@@ -54,10 +61,19 @@ public class House
         {
             _currentRoom -= 1;
         }
+
+        return _currentRoom;
     }
 
-    public void look(Player player, Room room)
+    /**
+     * REFACTORED
+     * Now returns a number for the item that was found
+     *
+     * @return 0: Nothing, 1: Coffee, 2: Cream, 3: Sugar
+     */
+    public int look(Player player, Room room)
     {
+        int toReturn = 0;
         if (room == null)
         {
             room = _rooms[_currentRoom];
@@ -68,20 +84,25 @@ public class House
             if (room.hasCoffee())
             {
                 player.getCoffee();
+                toReturn += 1;
             }
             if (room.hasCream())
             {
                 player.getCream();
+                toReturn += 2;
             }
             if (room.hasSugar())
             {
                 player.getSugar();
+                toReturn += 3;
             }
         }
         else
         {
             System.out.println("You don't see anything out of the ordinary.");
+            toReturn = 0;
         }
+        return toReturn;
     }
 
     public Room[] generateRooms(int numRooms)
