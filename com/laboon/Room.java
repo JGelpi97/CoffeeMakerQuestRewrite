@@ -44,7 +44,13 @@ public class Room
         return _southExit;
     }
 
-    private String getAdjective()
+    /**
+     * REFACTORED!
+     * Made method public
+     *
+     * @return Adjective
+     */
+    public String getAdjective()
     {
         String[] adjs = {"Small", "Quaint",
                 "Shiny", "Magenta", "Funny", "Sad", "Fuchsia", "Beige", "Massive", "Refinanced", "Tight", "Loose",
@@ -83,7 +89,13 @@ public class Room
         return adjs[(_pseudoRand++ % adjs.length)];
     }
 
-    private String getNoun()
+    /**
+     * REFACTORED!
+     * Made method public
+     *
+     * @return Noun
+     */
+    public String getNoun()
     {
         String[] nouns = {"kettle", "sink", "sofa", "plant", "elephant", "bird cage", "record player", "picture of a ghost",
                 "picture of a dog", "dresser", "book", "pizza", "cake", "pinball game",

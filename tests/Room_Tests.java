@@ -1,6 +1,8 @@
 import com.laboon.Room;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 import static org.junit.Assert.*;
 
 
@@ -355,5 +357,91 @@ public class Room_Tests
     {
         r = new Room(false, false, false, false, false);
         assertTrue(!r.getDescription().contains("door leads North.") && !r.getDescription().contains("door leads South."));
+    }
+
+    /**
+     * NEW TEST!
+     *
+     * The following test to make sure that Room.getAdjective() returns unique adjectives
+     *
+     */
+    /*
+    - This tests to make sure that each adjective is unique
+    - This uses the properties of a HashMap to make sure each adjective is unique
+    - To Pass: Only unique adjectives (keys) are used in the HashMap
+    - Expected Output: Each Adjective is Unique
+     */
+    @Test
+    public void test_getAdjective()
+    {
+        String s;
+        r = new Room(false,false,false,false,false);
+        HashMap<String,String> hm = new HashMap<String, String>();
+        int numErrors = 0;
+        String errorString = "";
+        for(int i = 0; i < 157; i += 1)
+        {
+            s = r.getAdjective();
+            if (hm.get(s) == null)
+            {
+                hm.put(s,s);
+            }
+            else
+            {
+                numErrors += 1;
+                errorString += "Adjective: " + s + " is not Unique!\n";
+            }
+        }
+        if (numErrors != 0)
+        {
+            fail(errorString);
+        }
+        else
+        {
+            assertEquals(0,0);
+        }
+    }
+
+    /**
+     * NEW TEST!
+     *
+     * The following test to make sure that Room.getNoun() returns unique adjectives
+     *
+     */
+    /*
+    - This tests to make sure that each noun is unique
+    - This uses the properties of a HashMap to make sure each noun is unique
+    - To Pass: Only unique noun (keys) are used in the HashMap
+    - Expected Output: Each Noun is Unique
+     */
+    @Test
+    public void test_getNoun()
+    {
+        String s;
+        r = new Room(false,false,false,false,false);
+        HashMap<String,String> hm = new HashMap<String, String>();
+        int numErrors = 0;
+        String errorString = "\n";
+        for(int i = 0; i < 36; i += 1)
+        {
+            s = r.getNoun();
+            if (hm.get(s) == null)
+            {
+                hm.put(s,s);
+            }
+            else
+            {
+                numErrors += 1;
+                errorString += "Noun: " + s + " is not Unique!\n";
+            }
+        }
+        if (numErrors != 0)
+        {
+            fail(errorString);
+        }
+        else
+        {
+            assertEquals(0,0);
+        }
     }
 }

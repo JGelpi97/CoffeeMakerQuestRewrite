@@ -725,6 +725,6 @@ public class House_Tests
 
         House h = new House(6);
 
-        assertEquals(3, h.look(p, r));
+        assertEquals(4, h.look(p, r));
     }
 }

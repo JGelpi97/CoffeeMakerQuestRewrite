@@ -69,7 +69,7 @@ public class House
      * REFACTORED
      * Now returns a number for the item that was found
      *
-     * @return 0: Nothing, 1: Coffee, 2: Cream, 3: Sugar
+     * @return 0: Nothing, 1: Coffee, 2: Cream, 4: Sugar
      */
     public int look(Player player, Room room)
     {
@@ -94,7 +94,7 @@ public class House
             if (room.hasSugar())
             {
                 player.getSugar();
-                toReturn += 3;
+                toReturn += 4;
             }
         }
         else
